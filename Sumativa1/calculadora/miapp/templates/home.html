@@ -1,0 +1,87 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        /* Estilos para la Calculadora */
+        body {
+            background-color: #F4F4F4;
+            font-family: Arial, sans-serif;
+        }
+
+        .Calculadora {
+            width: 350px;
+            background-color: #fff;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .Calculadora h2 {
+            text-align: center;
+            font-weight: normal;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .Calculadora input[type="text"],
+        .Calculadora select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        .Calculadora button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #0098cb;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .Calculadora button:hover {
+            background-color: #00b8eb;
+        }
+
+        .resultado {
+            font-size: 24px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class='Calculadora'>
+        <h2>Calculadora</h2>
+        <form method="POST" action="{% url 'home' %}
+        "> {% csrf_token %}
+            <input type="text" name="numero1" placeholder="Numero 1" required>
+            <input type="text" name="numero2" placeholder="Numero 2" required>
+            
+            <select name="operacion" required>
+                <option value="suma">Suma</option>
+                <option value="resta">Resta</option>
+                <option value="multiplicacion">Multiplicacion</option>
+                <option value="division">Division</option>
+            </select>
+
+            <button type="submit">Calcular</button>
+        </form>
+        {% if resultado %}
+            <div class="resultado">
+                Resultado: {{ resultado }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
